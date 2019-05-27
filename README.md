@@ -1,4 +1,4 @@
-# Benchgo
+# Bench Error golang
 
 > just benchmark simple package
 
