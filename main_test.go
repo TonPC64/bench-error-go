@@ -43,3 +43,15 @@ func BenchmarkNewErrWithPKGErrorsConcat(b *testing.B) {
 		newErrWithPKGErrorConcat(err)
 	}
 }
+
+func BenchmarkStackTraceErrorConCat(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		stackTraceErrorConCat()
+	}
+}
+
+func BenchmarkStackTraceErrorConCatFmt(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		stackTraceErrorConCatFmt()
+	}
+}

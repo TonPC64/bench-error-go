@@ -32,3 +32,33 @@ func newErrWithErrorsConcat(err error) error {
 func newErrWithPKGErrorConcat(err error) error {
 	return pkgError.Wrap(err, "error ")
 }
+
+// Stacktrace V1
+func stackTraceErrorConCat() error {
+	return redisClient()
+}
+
+func redis() error {
+	return errors.New("[Redis]: connection erorr")
+}
+
+func redisClient() error {
+	err := redis()
+	msg := "[RedisClient]: Unable to connect " + err.Error()
+	return errors.New(msg)
+}
+
+// Stacktrace V2
+func stackTraceErrorConCatFmt() error {
+	return redisClient2()
+}
+
+func redis2() error {
+	return errors.New("[Redis]: connection erorr")
+}
+
+func redisClient2() error {
+	err := redis2()
+	msg := fmt.Sprintf("[RedisClient]: Unable to connect %+v", err)
+	return errors.New(msg)
+}
