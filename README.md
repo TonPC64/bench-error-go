@@ -2,6 +2,13 @@
 
 > just benchmark simple package
 
+
+## Run Bench
+
+```sh
+go test -benchmem -bench=.
+```
+
 ## new error with fmt.Errorf vs errors.New()
 
 ```text
