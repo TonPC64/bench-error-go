@@ -7,7 +7,10 @@ import (
 	pkgError "github.com/pkg/errors"
 )
 
-func main() {}
+func main() {
+	fmt.Println(stackTraceErrorConCat())
+	fmt.Println(stackTraceErrorConCatFmt())
+}
 
 func newErrWithFmt() error {
 	return fmt.Errorf("error")
@@ -53,12 +56,8 @@ func stackTraceErrorConCatFmt() error {
 	return redisClient2()
 }
 
-func redis2() error {
-	return errors.New("[Redis]: connection erorr")
-}
-
 func redisClient2() error {
-	err := redis2()
+	err := redis()
 	msg := fmt.Sprintf("[RedisClient]: Unable to connect %+v", err)
 	return errors.New(msg)
 }
