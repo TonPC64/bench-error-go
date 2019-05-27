@@ -9,7 +9,7 @@
 go test -benchmem -bench=.
 ```
 
-## new error with fmt.Errorf vs errors.New()
+## new error with fmt.Errorf vs errors.New() vs pkg/errors.New()
 
 ```text
 goos: darwin
