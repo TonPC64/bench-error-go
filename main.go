@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	pkgError "github.com/pkg/errors"
+	"golang.org/x/xerrors"
 )
 
 func main() {
@@ -24,6 +25,10 @@ func newErrWithPKGError() error {
 	return pkgError.New("error")
 }
 
+func newErrWithXErrors() error {
+	return xerrors.New("error")
+}
+
 func newErrWithFmtConcat(err error) error {
 	return fmt.Errorf("error %v", err)
 }
@@ -34,6 +39,10 @@ func newErrWithErrorsConcat(err error) error {
 
 func newErrWithPKGErrorConcat(err error) error {
 	return pkgError.Wrap(err, "error ")
+}
+
+func newErrWithXErrorConcat(err error) error {
+	return xerrors.Errorf("error %+v", err)
 }
 
 // Stacktrace V1

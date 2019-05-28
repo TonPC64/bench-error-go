@@ -23,6 +23,12 @@ func BenchmarkNewErrWithPKGError(b *testing.B) {
 	}
 }
 
+func BenchmarkNewErrWithXErrors(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		newErrWithXErrors()
+	}
+}
+
 var err = errors.New("concat")
 
 func BenchmarkNewErrWithFmtConcat(b *testing.B) {
@@ -44,6 +50,13 @@ func BenchmarkNewErrWithPKGErrorsConcat(b *testing.B) {
 	}
 }
 
+func BenchmarkNewErrWithXErrorsConcat(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		newErrWithXErrorConcat(err)
+	}
+}
+
+// Stacktrace
 func BenchmarkStackTraceErrorConCat(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		stackTraceErrorConCat()
