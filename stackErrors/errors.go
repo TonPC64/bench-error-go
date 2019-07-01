@@ -12,10 +12,8 @@ func New(s string, e ...error) error {
 	caller := getCallerFunctionName()
 	err := StackError{err: "[" + caller + "]: " + s}
 
-	if len(e) > 0 {
-		if newErr, ok := e[0].(StackError); ok {
-			err.err = err.err + " " + newErr.err
-		}
+	if len(e) > 0 && e[0] != nil {
+		err.err = err.err + " " + e[0].Error()
 	}
 
 	return err
