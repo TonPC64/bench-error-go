@@ -83,7 +83,8 @@ func newHttpError() error {
 }
 
 func foo() error {
-	return stackErrors.New("error1")
+	httperr := httpErrors.New("http error", httpErrors.HTTPResponse{Response: http.StatusText(http.StatusInternalServerError), Code: http.StatusInternalServerError})
+	return stackErrors.New("httpError", httperr)
 }
 
 func bar() error {

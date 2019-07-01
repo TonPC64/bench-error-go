@@ -25,5 +25,5 @@ func (h HTTPError) Error() string {
 		return h.Err
 	}
 
-	return "[" + strconv.Itoa(h.Code) + "]: " + h.Err
+	return h.Err + ", status code: " + strconv.Itoa(h.Code)
 }
