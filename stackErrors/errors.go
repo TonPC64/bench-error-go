@@ -8,12 +8,14 @@ type StackError struct {
 	err string
 }
 
-func New(s string, e ...error) error {
+func New(s string, es ...error) error {
 	caller := getCallerFunctionName()
 	err := StackError{err: "[" + caller + "]: " + s}
 
-	if len(e) > 0 && e[0] != nil {
-		err.err = err.err + " " + e[0].Error()
+	for _, e := range es {
+		if e != nil {
+			err.err = err.err + " " + e.Error()
+		}
 	}
 
 	return err
