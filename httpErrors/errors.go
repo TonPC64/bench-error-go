@@ -2,26 +2,26 @@ package errors
 
 import "strconv"
 
-type HttpResponse struct {
+type HTTPResponse struct {
 	Response interface{}
 	Code     int
 }
 
 type HTTPError struct {
 	Err string
-	*HttpResponse
+	*HTTPResponse
 }
 
-func New(s string, r ...HttpResponse) error {
+func New(s string, r ...HTTPResponse) error {
 	if len(r) == 0 {
 		return HTTPError{Err: s}
 	}
 
-	return HTTPError{Err: s, HttpResponse: &r[0]}
+	return HTTPError{Err: s, HTTPResponse: &r[0]}
 }
 
 func (h HTTPError) Error() string {
-	if h.HttpResponse == nil {
+	if h.HTTPResponse == nil {
 		return h.Err
 	}
 

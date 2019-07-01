@@ -76,7 +76,7 @@ func redisClient2() error {
 
 // custom error
 func newHttpError() error {
-	return httpErrors.New("error", httpErrors.HttpResponse{
+	return httpErrors.New("error", httpErrors.HTTPResponse{
 		Code:     http.StatusInternalServerError,
 		Response: "error message",
 	})
