@@ -9,11 +9,11 @@ import (
 	"golang.org/x/xerrors"
 
 	httpErrors "github.com/TonPC64/benchgo/httpErrors"
+	stackErrors "github.com/TonPC64/benchgo/stackErrors"
 )
 
 func main() {
-	fmt.Println(stackTraceErrorConCat())
-	fmt.Println(stackTraceErrorConCatFmt())
+	fmt.Println(bar())
 }
 
 func newErrWithFmt() error {
@@ -80,4 +80,12 @@ func newHttpError() error {
 		Code:     http.StatusInternalServerError,
 		Response: "error message",
 	})
+}
+
+func foo() error {
+	return stackErrors.New("error1")
+}
+
+func bar() error {
+	return stackErrors.New("error2", foo())
 }

@@ -74,3 +74,9 @@ func BenchmarkNewHttpError(b *testing.B) {
 		newHttpError()
 	}
 }
+
+func BenchmarkNewStackError(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		foo()
+	}
+}
