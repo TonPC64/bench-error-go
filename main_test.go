@@ -68,3 +68,9 @@ func BenchmarkStackTraceErrorConCatFmt(b *testing.B) {
 		stackTraceErrorConCatFmt()
 	}
 }
+
+func BenchmarkNewHttpError(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		newHttpError()
+	}
+}

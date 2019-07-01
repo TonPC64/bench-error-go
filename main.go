@@ -3,9 +3,12 @@ package main
 import (
 	"errors"
 	"fmt"
+	"net/http"
 
 	pkgError "github.com/pkg/errors"
 	"golang.org/x/xerrors"
+
+	httpErrors "github.com/TonPC64/benchgo/httpErrors"
 )
 
 func main() {
@@ -69,4 +72,12 @@ func redisClient2() error {
 	err := redis()
 	msg := fmt.Sprintf("[RedisClient]: Unable to connect %+v", err)
 	return errors.New(msg)
+}
+
+// custom error
+func newHttpError() error {
+	return httpErrors.New("error", httpErrors.HttpResponse{
+		Code:     http.StatusInternalServerError,
+		Response: "error message",
+	})
 }
